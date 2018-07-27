@@ -25,5 +25,25 @@ namespace NategCertificateCreator
                 TemplatePath.Text = OpenTemplate.FileName;
             }
         }
+
+        private void StandardPolice_CheckedChanged(object sender, EventArgs e)
+        {
+            if (StandardPolice.Checked == true)
+            {
+                //disable advanced police button
+                AdvancedPoliceBtn.Enabled = false;
+            }
+            else
+            {
+                //enable advanced police button 
+                AdvancedPoliceBtn.Enabled = true;
+            }
+        }
+
+        private void HelpBtn_Click(object sender, EventArgs e)
+        {
+            HelpForm Help = new HelpForm();
+            Help.ShowDialog();
+        }
     }
 }

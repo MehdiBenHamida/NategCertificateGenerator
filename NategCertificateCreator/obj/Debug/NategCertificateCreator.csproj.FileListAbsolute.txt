@@ -7,3 +7,4 @@ C:\Users\mhdib\Documents\Visual Studio 2012\Projects\NategCertificateCreator\Nat
 C:\Users\mhdib\Documents\Visual Studio 2012\Projects\NategCertificateCreator\NategCertificateCreator\obj\Debug\NategCertificateCreator.exe
 C:\Users\mhdib\Documents\Visual Studio 2012\Projects\NategCertificateCreator\NategCertificateCreator\obj\Debug\NategCertificateCreator.pdb
 C:\Users\mhdib\Documents\Visual Studio 2012\Projects\NategCertificateCreator\NategCertificateCreator\obj\Debug\NategCertificateCreator.csprojResolveAssemblyReference.cache
+C:\Users\mhdib\Documents\Visual Studio 2012\Projects\NategCertificateCreator\NategCertificateCreator\obj\Debug\NategCertificateCreator.HelpForm.resources

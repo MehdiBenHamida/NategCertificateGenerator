@@ -47,6 +47,12 @@
             this.PositionX = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.PositionYLabel = new System.Windows.Forms.Label();
+            this.TextLebel = new System.Windows.Forms.Label();
+            this.StandardPolice = new System.Windows.Forms.CheckBox();
+            this.AdvancedPoliceBtn = new System.Windows.Forms.Button();
+            this.OutputLabel = new System.Windows.Forms.Label();
+            this.OutputPath = new System.Windows.Forms.TextBox();
+            this.OutputBrowseBtn = new System.Windows.Forms.Button();
             this.ProgressBox.SuspendLayout();
             this.CertificateBox.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +63,7 @@
             this.ProgressBox.Controls.Add(this.ProgressLabel);
             this.ProgressBox.Controls.Add(this.CancelBtn);
             this.ProgressBox.Controls.Add(this.CreationProgress);
-            this.ProgressBox.Location = new System.Drawing.Point(12, 283);
+            this.ProgressBox.Location = new System.Drawing.Point(12, 341);
             this.ProgressBox.Name = "ProgressBox";
             this.ProgressBox.Size = new System.Drawing.Size(433, 123);
             this.ProgressBox.TabIndex = 0;
@@ -106,9 +112,16 @@
             this.HelpBtn.TabIndex = 0;
             this.HelpBtn.Text = "Help";
             this.HelpBtn.UseVisualStyleBackColor = true;
+            this.HelpBtn.Click += new System.EventHandler(this.HelpBtn_Click);
             // 
             // CertificateBox
             // 
+            this.CertificateBox.Controls.Add(this.OutputBrowseBtn);
+            this.CertificateBox.Controls.Add(this.OutputPath);
+            this.CertificateBox.Controls.Add(this.OutputLabel);
+            this.CertificateBox.Controls.Add(this.AdvancedPoliceBtn);
+            this.CertificateBox.Controls.Add(this.StandardPolice);
+            this.CertificateBox.Controls.Add(this.TextLebel);
             this.CertificateBox.Controls.Add(this.PositionYLabel);
             this.CertificateBox.Controls.Add(this.textBox1);
             this.CertificateBox.Controls.Add(this.PositionX);
@@ -121,7 +134,7 @@
             this.CertificateBox.Controls.Add(this.TemplateLabel);
             this.CertificateBox.Location = new System.Drawing.Point(12, 45);
             this.CertificateBox.Name = "CertificateBox";
-            this.CertificateBox.Size = new System.Drawing.Size(433, 201);
+            this.CertificateBox.Size = new System.Drawing.Size(433, 251);
             this.CertificateBox.TabIndex = 2;
             this.CertificateBox.TabStop = false;
             this.CertificateBox.Text = "Certificate";
@@ -155,7 +168,7 @@
             // 
             // CreateBtn
             // 
-            this.CreateBtn.Location = new System.Drawing.Point(370, 254);
+            this.CreateBtn.Location = new System.Drawing.Point(370, 312);
             this.CreateBtn.Name = "CreateBtn";
             this.CreateBtn.Size = new System.Drawing.Size(75, 23);
             this.CreateBtn.TabIndex = 3;
@@ -195,7 +208,7 @@
             // PositionXLabel
             // 
             this.PositionXLabel.AutoSize = true;
-            this.PositionXLabel.Location = new System.Drawing.Point(21, 132);
+            this.PositionXLabel.Location = new System.Drawing.Point(89, 138);
             this.PositionXLabel.Name = "PositionXLabel";
             this.PositionXLabel.Size = new System.Drawing.Size(57, 13);
             this.PositionXLabel.TabIndex = 6;
@@ -203,14 +216,14 @@
             // 
             // PositionX
             // 
-            this.PositionX.Location = new System.Drawing.Point(92, 129);
+            this.PositionX.Location = new System.Drawing.Point(152, 135);
             this.PositionX.Name = "PositionX";
             this.PositionX.Size = new System.Drawing.Size(71, 20);
             this.PositionX.TabIndex = 7;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(271, 129);
+            this.textBox1.Location = new System.Drawing.Point(152, 161);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(71, 20);
             this.textBox1.TabIndex = 8;
@@ -218,17 +231,75 @@
             // PositionYLabel
             // 
             this.PositionYLabel.AutoSize = true;
-            this.PositionYLabel.Location = new System.Drawing.Point(193, 132);
+            this.PositionYLabel.Location = new System.Drawing.Point(89, 164);
             this.PositionYLabel.Name = "PositionYLabel";
             this.PositionYLabel.Size = new System.Drawing.Size(57, 13);
             this.PositionYLabel.TabIndex = 9;
             this.PositionYLabel.Text = "Position Y:";
             // 
+            // TextLebel
+            // 
+            this.TextLebel.AutoSize = true;
+            this.TextLebel.Location = new System.Drawing.Point(47, 128);
+            this.TextLebel.Name = "TextLebel";
+            this.TextLebel.Size = new System.Drawing.Size(31, 13);
+            this.TextLebel.TabIndex = 10;
+            this.TextLebel.Text = "Text:";
+            // 
+            // StandardPolice
+            // 
+            this.StandardPolice.AutoSize = true;
+            this.StandardPolice.Checked = true;
+            this.StandardPolice.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.StandardPolice.Location = new System.Drawing.Point(236, 137);
+            this.StandardPolice.Name = "StandardPolice";
+            this.StandardPolice.Size = new System.Drawing.Size(101, 17);
+            this.StandardPolice.TabIndex = 11;
+            this.StandardPolice.Text = "Standard Police";
+            this.StandardPolice.UseVisualStyleBackColor = true;
+            this.StandardPolice.CheckedChanged += new System.EventHandler(this.StandardPolice_CheckedChanged);
+            // 
+            // AdvancedPoliceBtn
+            // 
+            this.AdvancedPoliceBtn.Enabled = false;
+            this.AdvancedPoliceBtn.Location = new System.Drawing.Point(236, 161);
+            this.AdvancedPoliceBtn.Name = "AdvancedPoliceBtn";
+            this.AdvancedPoliceBtn.Size = new System.Drawing.Size(106, 20);
+            this.AdvancedPoliceBtn.TabIndex = 12;
+            this.AdvancedPoliceBtn.Text = "Advanced Police";
+            this.AdvancedPoliceBtn.UseVisualStyleBackColor = true;
+            // 
+            // OutputLabel
+            // 
+            this.OutputLabel.AutoSize = true;
+            this.OutputLabel.Location = new System.Drawing.Point(36, 207);
+            this.OutputLabel.Name = "OutputLabel";
+            this.OutputLabel.Size = new System.Drawing.Size(42, 13);
+            this.OutputLabel.TabIndex = 13;
+            this.OutputLabel.Text = "Output:";
+            // 
+            // OutputPath
+            // 
+            this.OutputPath.Enabled = false;
+            this.OutputPath.Location = new System.Drawing.Point(92, 204);
+            this.OutputPath.Name = "OutputPath";
+            this.OutputPath.Size = new System.Drawing.Size(250, 20);
+            this.OutputPath.TabIndex = 14;
+            // 
+            // OutputBrowseBtn
+            // 
+            this.OutputBrowseBtn.Location = new System.Drawing.Point(348, 204);
+            this.OutputBrowseBtn.Name = "OutputBrowseBtn";
+            this.OutputBrowseBtn.Size = new System.Drawing.Size(66, 20);
+            this.OutputBrowseBtn.TabIndex = 15;
+            this.OutputBrowseBtn.Text = "Browse";
+            this.OutputBrowseBtn.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 413);
+            this.ClientSize = new System.Drawing.Size(454, 480);
             this.Controls.Add(this.CreateBtn);
             this.Controls.Add(this.CertificateBox);
             this.Controls.Add(this.HelpBtn);
@@ -266,6 +337,12 @@
         private System.Windows.Forms.Button CertifiedBrowse;
         private System.Windows.Forms.TextBox CertifiedPath;
         private System.Windows.Forms.Label CertificatedLabel;
+        private System.Windows.Forms.Button AdvancedPoliceBtn;
+        private System.Windows.Forms.CheckBox StandardPolice;
+        private System.Windows.Forms.Label TextLebel;
+        private System.Windows.Forms.Button OutputBrowseBtn;
+        private System.Windows.Forms.TextBox OutputPath;
+        private System.Windows.Forms.Label OutputLabel;
     }
 }
 
