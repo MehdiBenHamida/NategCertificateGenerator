@@ -19,7 +19,7 @@ namespace NategCertificateCreator
 
         private void TemplateBrowseBtn_Click(object sender, EventArgs e)
         {
-            OpenTemplate.Filter = "PNG files (*.png)|*.png";
+            OpenTemplate.Filter = "PNG files (*.png)|*.png"; // check other types of images
             if (OpenTemplate.ShowDialog() == DialogResult.OK)
             {
                 TemplatePath.Text = OpenTemplate.FileName;
