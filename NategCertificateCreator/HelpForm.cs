@@ -16,5 +16,16 @@ namespace NategCertificateCreator
         {
             InitializeComponent();
         }
+
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void GithubLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            GithubLink.LinkVisited = true;
+            System.Diagnostics.Process.Start("https://github.com/MehdiBenHamida/NategMailsSender");
+        }
     }
 }

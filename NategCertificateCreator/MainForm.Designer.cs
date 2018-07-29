@@ -35,24 +35,30 @@
             this.CreationProgress = new System.Windows.Forms.ProgressBar();
             this.HelpBtn = new System.Windows.Forms.Button();
             this.CertificateBox = new System.Windows.Forms.GroupBox();
+            this.OutputBrowseBtn = new System.Windows.Forms.Button();
+            this.OutputPath = new System.Windows.Forms.TextBox();
+            this.OutputLabel = new System.Windows.Forms.Label();
+            this.AdvancedPoliceBtn = new System.Windows.Forms.Button();
+            this.StandardPolice = new System.Windows.Forms.CheckBox();
+            this.TextLebel = new System.Windows.Forms.Label();
+            this.PositionYLabel = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PositionX = new System.Windows.Forms.TextBox();
+            this.PositionXLabel = new System.Windows.Forms.Label();
+            this.CertifiedBrowse = new System.Windows.Forms.Button();
+            this.CertifiedPath = new System.Windows.Forms.TextBox();
+            this.CertificatedLabel = new System.Windows.Forms.Label();
             this.TemplateBrowseBtn = new System.Windows.Forms.Button();
             this.TemplatePath = new System.Windows.Forms.TextBox();
             this.TemplateLabel = new System.Windows.Forms.Label();
             this.CreateBtn = new System.Windows.Forms.Button();
             this.OpenTemplate = new System.Windows.Forms.OpenFileDialog();
-            this.CertificatedLabel = new System.Windows.Forms.Label();
-            this.CertifiedPath = new System.Windows.Forms.TextBox();
-            this.CertifiedBrowse = new System.Windows.Forms.Button();
-            this.PositionXLabel = new System.Windows.Forms.Label();
-            this.PositionX = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.PositionYLabel = new System.Windows.Forms.Label();
-            this.TextLebel = new System.Windows.Forms.Label();
-            this.StandardPolice = new System.Windows.Forms.CheckBox();
-            this.AdvancedPoliceBtn = new System.Windows.Forms.Button();
-            this.OutputLabel = new System.Windows.Forms.Label();
-            this.OutputPath = new System.Windows.Forms.TextBox();
-            this.OutputBrowseBtn = new System.Windows.Forms.Button();
+            this.StandardCkeck = new System.Windows.Forms.CheckBox();
+            this.AdvancedBtn = new System.Windows.Forms.Button();
+            this.OutputCheck = new System.Windows.Forms.CheckBox();
+            this.OpenCertifiedFile = new System.Windows.Forms.OpenFileDialog();
+            this.OutputBrowse = new System.Windows.Forms.FolderBrowserDialog();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.ProgressBox.SuspendLayout();
             this.CertificateBox.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +69,7 @@
             this.ProgressBox.Controls.Add(this.ProgressLabel);
             this.ProgressBox.Controls.Add(this.CancelBtn);
             this.ProgressBox.Controls.Add(this.CreationProgress);
-            this.ProgressBox.Location = new System.Drawing.Point(12, 341);
+            this.ProgressBox.Location = new System.Drawing.Point(12, 369);
             this.ProgressBox.Name = "ProgressBox";
             this.ProgressBox.Size = new System.Drawing.Size(433, 123);
             this.ProgressBox.TabIndex = 0;
@@ -96,6 +102,7 @@
             this.CancelBtn.TabIndex = 1;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // CreationProgress
             // 
@@ -116,6 +123,9 @@
             // 
             // CertificateBox
             // 
+            this.CertificateBox.Controls.Add(this.OutputCheck);
+            this.CertificateBox.Controls.Add(this.AdvancedBtn);
+            this.CertificateBox.Controls.Add(this.StandardCkeck);
             this.CertificateBox.Controls.Add(this.OutputBrowseBtn);
             this.CertificateBox.Controls.Add(this.OutputPath);
             this.CertificateBox.Controls.Add(this.OutputLabel);
@@ -134,10 +144,128 @@
             this.CertificateBox.Controls.Add(this.TemplateLabel);
             this.CertificateBox.Location = new System.Drawing.Point(12, 45);
             this.CertificateBox.Name = "CertificateBox";
-            this.CertificateBox.Size = new System.Drawing.Size(433, 251);
+            this.CertificateBox.Size = new System.Drawing.Size(433, 295);
             this.CertificateBox.TabIndex = 2;
             this.CertificateBox.TabStop = false;
             this.CertificateBox.Text = "Certificate";
+            // 
+            // OutputBrowseBtn
+            // 
+            this.OutputBrowseBtn.Location = new System.Drawing.Point(348, 233);
+            this.OutputBrowseBtn.Name = "OutputBrowseBtn";
+            this.OutputBrowseBtn.Size = new System.Drawing.Size(66, 20);
+            this.OutputBrowseBtn.TabIndex = 15;
+            this.OutputBrowseBtn.Text = "Browse";
+            this.OutputBrowseBtn.UseVisualStyleBackColor = true;
+            this.OutputBrowseBtn.Click += new System.EventHandler(this.OutputBrowseBtn_Click);
+            // 
+            // OutputPath
+            // 
+            this.OutputPath.Enabled = false;
+            this.OutputPath.Location = new System.Drawing.Point(92, 233);
+            this.OutputPath.Name = "OutputPath";
+            this.OutputPath.Size = new System.Drawing.Size(250, 20);
+            this.OutputPath.TabIndex = 14;
+            // 
+            // OutputLabel
+            // 
+            this.OutputLabel.AutoSize = true;
+            this.OutputLabel.Location = new System.Drawing.Point(36, 236);
+            this.OutputLabel.Name = "OutputLabel";
+            this.OutputLabel.Size = new System.Drawing.Size(42, 13);
+            this.OutputLabel.TabIndex = 13;
+            this.OutputLabel.Text = "Output:";
+            // 
+            // AdvancedPoliceBtn
+            // 
+            this.AdvancedPoliceBtn.Enabled = false;
+            this.AdvancedPoliceBtn.Location = new System.Drawing.Point(236, 190);
+            this.AdvancedPoliceBtn.Name = "AdvancedPoliceBtn";
+            this.AdvancedPoliceBtn.Size = new System.Drawing.Size(106, 20);
+            this.AdvancedPoliceBtn.TabIndex = 12;
+            this.AdvancedPoliceBtn.Text = "Advanced Police";
+            this.AdvancedPoliceBtn.UseVisualStyleBackColor = true;
+            // 
+            // StandardPolice
+            // 
+            this.StandardPolice.AutoSize = true;
+            this.StandardPolice.Checked = true;
+            this.StandardPolice.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.StandardPolice.Location = new System.Drawing.Point(236, 166);
+            this.StandardPolice.Name = "StandardPolice";
+            this.StandardPolice.Size = new System.Drawing.Size(101, 17);
+            this.StandardPolice.TabIndex = 11;
+            this.StandardPolice.Text = "Standard Police";
+            this.StandardPolice.UseVisualStyleBackColor = true;
+            this.StandardPolice.CheckedChanged += new System.EventHandler(this.StandardPolice_CheckedChanged);
+            // 
+            // TextLebel
+            // 
+            this.TextLebel.AutoSize = true;
+            this.TextLebel.Location = new System.Drawing.Point(47, 157);
+            this.TextLebel.Name = "TextLebel";
+            this.TextLebel.Size = new System.Drawing.Size(31, 13);
+            this.TextLebel.TabIndex = 10;
+            this.TextLebel.Text = "Text:";
+            // 
+            // PositionYLabel
+            // 
+            this.PositionYLabel.AutoSize = true;
+            this.PositionYLabel.Location = new System.Drawing.Point(89, 193);
+            this.PositionYLabel.Name = "PositionYLabel";
+            this.PositionYLabel.Size = new System.Drawing.Size(57, 13);
+            this.PositionYLabel.TabIndex = 9;
+            this.PositionYLabel.Text = "Position Y:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(152, 190);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(71, 20);
+            this.textBox1.TabIndex = 8;
+            // 
+            // PositionX
+            // 
+            this.PositionX.Location = new System.Drawing.Point(152, 164);
+            this.PositionX.Name = "PositionX";
+            this.PositionX.Size = new System.Drawing.Size(71, 20);
+            this.PositionX.TabIndex = 7;
+            // 
+            // PositionXLabel
+            // 
+            this.PositionXLabel.AutoSize = true;
+            this.PositionXLabel.Location = new System.Drawing.Point(89, 167);
+            this.PositionXLabel.Name = "PositionXLabel";
+            this.PositionXLabel.Size = new System.Drawing.Size(57, 13);
+            this.PositionXLabel.TabIndex = 6;
+            this.PositionXLabel.Text = "Position X:";
+            // 
+            // CertifiedBrowse
+            // 
+            this.CertifiedBrowse.Location = new System.Drawing.Point(348, 87);
+            this.CertifiedBrowse.Name = "CertifiedBrowse";
+            this.CertifiedBrowse.Size = new System.Drawing.Size(66, 20);
+            this.CertifiedBrowse.TabIndex = 5;
+            this.CertifiedBrowse.Text = "Browse";
+            this.CertifiedBrowse.UseVisualStyleBackColor = true;
+            this.CertifiedBrowse.Click += new System.EventHandler(this.CertifiedBrowse_Click);
+            // 
+            // CertifiedPath
+            // 
+            this.CertifiedPath.Enabled = false;
+            this.CertifiedPath.Location = new System.Drawing.Point(92, 87);
+            this.CertifiedPath.Name = "CertifiedPath";
+            this.CertifiedPath.Size = new System.Drawing.Size(250, 20);
+            this.CertifiedPath.TabIndex = 4;
+            // 
+            // CertificatedLabel
+            // 
+            this.CertificatedLabel.AutoSize = true;
+            this.CertificatedLabel.Location = new System.Drawing.Point(11, 91);
+            this.CertificatedLabel.Name = "CertificatedLabel";
+            this.CertificatedLabel.Size = new System.Drawing.Size(67, 13);
+            this.CertificatedLabel.TabIndex = 3;
+            this.CertificatedLabel.Text = "Certified File:";
             // 
             // TemplateBrowseBtn
             // 
@@ -168,7 +296,7 @@
             // 
             // CreateBtn
             // 
-            this.CreateBtn.Location = new System.Drawing.Point(370, 312);
+            this.CreateBtn.Location = new System.Drawing.Point(370, 346);
             this.CreateBtn.Name = "CreateBtn";
             this.CreateBtn.Size = new System.Drawing.Size(75, 23);
             this.CreateBtn.TabIndex = 3;
@@ -179,127 +307,50 @@
             // 
             this.OpenTemplate.FileName = "CertificateTemplate";
             // 
-            // CertificatedLabel
+            // StandardCkeck
             // 
-            this.CertificatedLabel.AutoSize = true;
-            this.CertificatedLabel.Location = new System.Drawing.Point(11, 91);
-            this.CertificatedLabel.Name = "CertificatedLabel";
-            this.CertificatedLabel.Size = new System.Drawing.Size(67, 13);
-            this.CertificatedLabel.TabIndex = 3;
-            this.CertificatedLabel.Text = "Certified File:";
+            this.StandardCkeck.AutoSize = true;
+            this.StandardCkeck.Checked = true;
+            this.StandardCkeck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.StandardCkeck.Location = new System.Drawing.Point(92, 122);
+            this.StandardCkeck.Name = "StandardCkeck";
+            this.StandardCkeck.Size = new System.Drawing.Size(153, 17);
+            this.StandardCkeck.TabIndex = 16;
+            this.StandardCkeck.Text = "Standard csv configuration";
+            this.StandardCkeck.UseVisualStyleBackColor = true;
+            this.StandardCkeck.CheckedChanged += new System.EventHandler(this.StandardCkeck_CheckedChanged);
             // 
-            // CertifiedPath
+            // AdvancedBtn
             // 
-            this.CertifiedPath.Enabled = false;
-            this.CertifiedPath.Location = new System.Drawing.Point(92, 87);
-            this.CertifiedPath.Name = "CertifiedPath";
-            this.CertifiedPath.Size = new System.Drawing.Size(250, 20);
-            this.CertifiedPath.TabIndex = 4;
+            this.AdvancedBtn.Enabled = false;
+            this.AdvancedBtn.Location = new System.Drawing.Point(251, 119);
+            this.AdvancedBtn.Name = "AdvancedBtn";
+            this.AdvancedBtn.Size = new System.Drawing.Size(91, 20);
+            this.AdvancedBtn.TabIndex = 17;
+            this.AdvancedBtn.Text = "Advanced";
+            this.AdvancedBtn.UseVisualStyleBackColor = true;
             // 
-            // CertifiedBrowse
+            // OutputCheck
             // 
-            this.CertifiedBrowse.Location = new System.Drawing.Point(348, 87);
-            this.CertifiedBrowse.Name = "CertifiedBrowse";
-            this.CertifiedBrowse.Size = new System.Drawing.Size(66, 20);
-            this.CertifiedBrowse.TabIndex = 5;
-            this.CertifiedBrowse.Text = "Browse";
-            this.CertifiedBrowse.UseVisualStyleBackColor = true;
+            this.OutputCheck.AutoSize = true;
+            this.OutputCheck.Checked = true;
+            this.OutputCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.OutputCheck.Location = new System.Drawing.Point(92, 260);
+            this.OutputCheck.Name = "OutputCheck";
+            this.OutputCheck.Size = new System.Drawing.Size(128, 17);
+            this.OutputCheck.TabIndex = 18;
+            this.OutputCheck.Text = "Output description file";
+            this.OutputCheck.UseVisualStyleBackColor = true;
             // 
-            // PositionXLabel
+            // OpenCertifiedFile
             // 
-            this.PositionXLabel.AutoSize = true;
-            this.PositionXLabel.Location = new System.Drawing.Point(89, 138);
-            this.PositionXLabel.Name = "PositionXLabel";
-            this.PositionXLabel.Size = new System.Drawing.Size(57, 13);
-            this.PositionXLabel.TabIndex = 6;
-            this.PositionXLabel.Text = "Position X:";
-            // 
-            // PositionX
-            // 
-            this.PositionX.Location = new System.Drawing.Point(152, 135);
-            this.PositionX.Name = "PositionX";
-            this.PositionX.Size = new System.Drawing.Size(71, 20);
-            this.PositionX.TabIndex = 7;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(152, 161);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(71, 20);
-            this.textBox1.TabIndex = 8;
-            // 
-            // PositionYLabel
-            // 
-            this.PositionYLabel.AutoSize = true;
-            this.PositionYLabel.Location = new System.Drawing.Point(89, 164);
-            this.PositionYLabel.Name = "PositionYLabel";
-            this.PositionYLabel.Size = new System.Drawing.Size(57, 13);
-            this.PositionYLabel.TabIndex = 9;
-            this.PositionYLabel.Text = "Position Y:";
-            // 
-            // TextLebel
-            // 
-            this.TextLebel.AutoSize = true;
-            this.TextLebel.Location = new System.Drawing.Point(47, 128);
-            this.TextLebel.Name = "TextLebel";
-            this.TextLebel.Size = new System.Drawing.Size(31, 13);
-            this.TextLebel.TabIndex = 10;
-            this.TextLebel.Text = "Text:";
-            // 
-            // StandardPolice
-            // 
-            this.StandardPolice.AutoSize = true;
-            this.StandardPolice.Checked = true;
-            this.StandardPolice.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.StandardPolice.Location = new System.Drawing.Point(236, 137);
-            this.StandardPolice.Name = "StandardPolice";
-            this.StandardPolice.Size = new System.Drawing.Size(101, 17);
-            this.StandardPolice.TabIndex = 11;
-            this.StandardPolice.Text = "Standard Police";
-            this.StandardPolice.UseVisualStyleBackColor = true;
-            this.StandardPolice.CheckedChanged += new System.EventHandler(this.StandardPolice_CheckedChanged);
-            // 
-            // AdvancedPoliceBtn
-            // 
-            this.AdvancedPoliceBtn.Enabled = false;
-            this.AdvancedPoliceBtn.Location = new System.Drawing.Point(236, 161);
-            this.AdvancedPoliceBtn.Name = "AdvancedPoliceBtn";
-            this.AdvancedPoliceBtn.Size = new System.Drawing.Size(106, 20);
-            this.AdvancedPoliceBtn.TabIndex = 12;
-            this.AdvancedPoliceBtn.Text = "Advanced Police";
-            this.AdvancedPoliceBtn.UseVisualStyleBackColor = true;
-            // 
-            // OutputLabel
-            // 
-            this.OutputLabel.AutoSize = true;
-            this.OutputLabel.Location = new System.Drawing.Point(36, 207);
-            this.OutputLabel.Name = "OutputLabel";
-            this.OutputLabel.Size = new System.Drawing.Size(42, 13);
-            this.OutputLabel.TabIndex = 13;
-            this.OutputLabel.Text = "Output:";
-            // 
-            // OutputPath
-            // 
-            this.OutputPath.Enabled = false;
-            this.OutputPath.Location = new System.Drawing.Point(92, 204);
-            this.OutputPath.Name = "OutputPath";
-            this.OutputPath.Size = new System.Drawing.Size(250, 20);
-            this.OutputPath.TabIndex = 14;
-            // 
-            // OutputBrowseBtn
-            // 
-            this.OutputBrowseBtn.Location = new System.Drawing.Point(348, 204);
-            this.OutputBrowseBtn.Name = "OutputBrowseBtn";
-            this.OutputBrowseBtn.Size = new System.Drawing.Size(66, 20);
-            this.OutputBrowseBtn.TabIndex = 15;
-            this.OutputBrowseBtn.Text = "Browse";
-            this.OutputBrowseBtn.UseVisualStyleBackColor = true;
+            this.OpenCertifiedFile.FileName = "Certified";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 480);
+            this.ClientSize = new System.Drawing.Size(454, 505);
             this.Controls.Add(this.CreateBtn);
             this.Controls.Add(this.CertificateBox);
             this.Controls.Add(this.HelpBtn);
@@ -343,6 +394,12 @@
         private System.Windows.Forms.Button OutputBrowseBtn;
         private System.Windows.Forms.TextBox OutputPath;
         private System.Windows.Forms.Label OutputLabel;
+        private System.Windows.Forms.Button AdvancedBtn;
+        private System.Windows.Forms.CheckBox StandardCkeck;
+        private System.Windows.Forms.CheckBox OutputCheck;
+        private System.Windows.Forms.OpenFileDialog OpenCertifiedFile;
+        private System.Windows.Forms.FolderBrowserDialog OutputBrowse;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
 

@@ -117,12 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UserNoteLabel.Text" xml:space="preserve">
-    <value>This software is called "Nateg Certificate Creator". It's a desktop application that 
-can be used to create a huge number of personalized certicates for people  listed 
-on a csv file. This software make all needed configuration in an easy way using 
-intuitive user interface. For more information and user guide document, please 
-visit our github repository.
-Thank for your interest in our software.</value>
-  </data>
 </root>
