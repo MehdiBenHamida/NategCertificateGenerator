@@ -9,3 +9,4 @@ C:\Users\mhdib\Documents\Visual Studio 2012\Projects\NategCertificateCreator\Nat
 C:\Users\mhdib\Documents\Visual Studio 2012\Projects\NategCertificateCreator\NategCertificateCreator\obj\Debug\NategCertificateCreator.csprojResolveAssemblyReference.cache
 C:\Users\mhdib\Documents\Visual Studio 2012\Projects\NategCertificateCreator\NategCertificateCreator\obj\Debug\NategCertificateCreator.HelpForm.resources
 C:\Users\mhdib\Documents\Visual Studio 2012\Projects\NategCertificateCreator\NategCertificateCreator\obj\Debug\NategCertificateCreator.PoliceConfigurationForm.resources
+C:\Users\mhdib\Documents\Visual Studio 2012\Projects\NategCertificateCreator\NategCertificateCreator\obj\Debug\NategCertificateCreator.FileConfigForm.resources

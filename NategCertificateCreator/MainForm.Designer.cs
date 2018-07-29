@@ -330,6 +330,7 @@
             this.AdvancedBtn.TabIndex = 17;
             this.AdvancedBtn.Text = "Advanced";
             this.AdvancedBtn.UseVisualStyleBackColor = true;
+            this.AdvancedBtn.Click += new System.EventHandler(this.AdvancedBtn_Click);
             // 
             // OutputCheck
             // 

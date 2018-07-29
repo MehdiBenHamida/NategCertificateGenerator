@@ -31,11 +31,6 @@ namespace NategCertificateCreator
             }
         }
 
-        private void CancelBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void Font_SelectedIndexChanged(object sender, EventArgs e)
         {
             SampleText.Font =  new Font((string)FontType.SelectedItem, SampleText.Font.Size);
@@ -50,12 +45,7 @@ namespace NategCertificateCreator
         private void FontSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             SampleText.Font = new Font(SampleText.Font.Name, (float)FontSize.SelectedItem);
-        }
-
-        private void OkBtn_Click(object sender, EventArgs e)
-        {
-
-        }
+        }     
 
         private void BoldCheck_CheckedChanged(object sender, EventArgs e)
         {
@@ -108,6 +98,17 @@ namespace NategCertificateCreator
                     SampleText.Font = new Font(SampleText.Font.Name, SampleText.Font.Size, System.Drawing.FontStyle.Bold);
                 }
             }
+        }
+
+        private void OkBtn_Click(object sender, EventArgs e)
+        {
+            // check the configuaration static class
+            this.Close();
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

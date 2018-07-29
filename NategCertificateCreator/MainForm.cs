@@ -112,5 +112,11 @@ namespace NategCertificateCreator
             PoliceConfigurationForm form = new PoliceConfigurationForm();
             form.ShowDialog();
         }
+
+        private void AdvancedBtn_Click(object sender, EventArgs e)
+        {
+            FileConfigForm form = new FileConfigForm();
+            form.ShowDialog();
+        }
     }
 }
