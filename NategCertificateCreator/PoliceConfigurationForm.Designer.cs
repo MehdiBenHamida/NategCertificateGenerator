@@ -39,8 +39,12 @@
             this.OkBtn = new System.Windows.Forms.Button();
             this.FontBox = new System.Windows.Forms.GroupBox();
             this.SampleBox = new System.Windows.Forms.GroupBox();
+            this.StyleBox = new System.Windows.Forms.GroupBox();
+            this.BoldCheck = new System.Windows.Forms.CheckBox();
+            this.ItalicCheck = new System.Windows.Forms.CheckBox();
             this.FontBox.SuspendLayout();
             this.SampleBox.SuspendLayout();
+            this.StyleBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // FontLabel
@@ -100,15 +104,16 @@
             // SampleText
             // 
             this.SampleText.AutoSize = true;
-            this.SampleText.Location = new System.Drawing.Point(34, 42);
+            this.SampleText.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SampleText.Location = new System.Drawing.Point(18, 16);
             this.SampleText.Name = "SampleText";
-            this.SampleText.Size = new System.Drawing.Size(66, 13);
+            this.SampleText.Size = new System.Drawing.Size(123, 24);
             this.SampleText.TabIndex = 6;
             this.SampleText.Text = "Sample Text";
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Location = new System.Drawing.Point(283, 287);
+            this.CancelBtn.Location = new System.Drawing.Point(283, 346);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(75, 23);
             this.CancelBtn.TabIndex = 7;
@@ -118,12 +123,13 @@
             // 
             // OkBtn
             // 
-            this.OkBtn.Location = new System.Drawing.Point(202, 287);
+            this.OkBtn.Location = new System.Drawing.Point(202, 346);
             this.OkBtn.Name = "OkBtn";
             this.OkBtn.Size = new System.Drawing.Size(75, 23);
             this.OkBtn.TabIndex = 0;
             this.OkBtn.Text = "Ok";
             this.OkBtn.UseVisualStyleBackColor = true;
+            this.OkBtn.Click += new System.EventHandler(this.OkBtn_Click);
             // 
             // FontBox
             // 
@@ -143,18 +149,52 @@
             // SampleBox
             // 
             this.SampleBox.Controls.Add(this.SampleText);
-            this.SampleBox.Location = new System.Drawing.Point(12, 187);
+            this.SampleBox.Location = new System.Drawing.Point(12, 246);
             this.SampleBox.Name = "SampleBox";
             this.SampleBox.Size = new System.Drawing.Size(346, 94);
             this.SampleBox.TabIndex = 10;
             this.SampleBox.TabStop = false;
             this.SampleBox.Text = "Sample";
             // 
+            // StyleBox
+            // 
+            this.StyleBox.Controls.Add(this.ItalicCheck);
+            this.StyleBox.Controls.Add(this.BoldCheck);
+            this.StyleBox.Location = new System.Drawing.Point(13, 188);
+            this.StyleBox.Name = "StyleBox";
+            this.StyleBox.Size = new System.Drawing.Size(345, 52);
+            this.StyleBox.TabIndex = 11;
+            this.StyleBox.TabStop = false;
+            this.StyleBox.Text = "Style";
+            // 
+            // BoldCheck
+            // 
+            this.BoldCheck.AutoSize = true;
+            this.BoldCheck.Location = new System.Drawing.Point(102, 19);
+            this.BoldCheck.Name = "BoldCheck";
+            this.BoldCheck.Size = new System.Drawing.Size(47, 17);
+            this.BoldCheck.TabIndex = 12;
+            this.BoldCheck.Text = "Bold";
+            this.BoldCheck.UseVisualStyleBackColor = true;
+            this.BoldCheck.CheckedChanged += new System.EventHandler(this.BoldCheck_CheckedChanged);
+            // 
+            // ItalicCheck
+            // 
+            this.ItalicCheck.AutoSize = true;
+            this.ItalicCheck.Location = new System.Drawing.Point(269, 19);
+            this.ItalicCheck.Name = "ItalicCheck";
+            this.ItalicCheck.Size = new System.Drawing.Size(48, 17);
+            this.ItalicCheck.TabIndex = 13;
+            this.ItalicCheck.Text = "Italic";
+            this.ItalicCheck.UseVisualStyleBackColor = true;
+            this.ItalicCheck.CheckedChanged += new System.EventHandler(this.ItalicCheck_CheckedChanged);
+            // 
             // PoliceConfigurationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 322);
+            this.ClientSize = new System.Drawing.Size(370, 375);
+            this.Controls.Add(this.StyleBox);
             this.Controls.Add(this.SampleBox);
             this.Controls.Add(this.FontBox);
             this.Controls.Add(this.OkBtn);
@@ -169,6 +209,8 @@
             this.FontBox.PerformLayout();
             this.SampleBox.ResumeLayout(false);
             this.SampleBox.PerformLayout();
+            this.StyleBox.ResumeLayout(false);
+            this.StyleBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -186,5 +228,8 @@
         private System.Windows.Forms.Button OkBtn;
         private System.Windows.Forms.GroupBox FontBox;
         private System.Windows.Forms.GroupBox SampleBox;
+        private System.Windows.Forms.GroupBox StyleBox;
+        private System.Windows.Forms.CheckBox ItalicCheck;
+        private System.Windows.Forms.CheckBox BoldCheck;
     }
 }

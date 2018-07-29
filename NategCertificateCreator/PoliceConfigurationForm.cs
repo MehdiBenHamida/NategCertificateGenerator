@@ -23,9 +23,9 @@ namespace NategCertificateCreator
             {
                 FontColor.Items.Add(color);
             }
-            List<string> sizes = new List<string>() { "8", "9", "10", "12", "14", "16", "18", "20", "22", 
-                "24", "26", "28", "30", "32", "34", "36", "38", "40", "44", "48", "56", "66", "72", "86", "92" };
-            foreach (string size in sizes)
+            List<float> sizes = new List<float>() { 8, 9, 10, 12, 14, 16, 18, 20, 22, 
+                24, 26, 28, 30, 32, 34, 36, 38, 40, 44, 48, 56, 66, 72, 86, 92 };
+            foreach (float size in sizes)
             {
                 FontSize.Items.Add(size);
             }
@@ -49,7 +49,65 @@ namespace NategCertificateCreator
 
         private void FontSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SampleText.Font = new Font(SampleText.Font.Name, (float)FontType.SelectedItem);
+            SampleText.Font = new Font(SampleText.Font.Name, (float)FontSize.SelectedItem);
+        }
+
+        private void OkBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BoldCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (BoldCheck.Checked == true)
+            {
+                if (ItalicCheck.Checked == false)
+                {
+                    SampleText.Font = new Font(SampleText.Font.Name, SampleText.Font.Size, System.Drawing.FontStyle.Bold);
+                }
+                else
+                {
+                    SampleText.Font = new Font(SampleText.Font.Name, SampleText.Font.Size, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold);                    
+                }
+            }
+            else
+            {
+                if (ItalicCheck.Checked == false)
+                {
+                    SampleText.Font = new Font(SampleText.Font.Name, SampleText.Font.Size, System.Drawing.FontStyle.Regular);
+                }
+                else
+                {
+                    SampleText.Font = new Font(SampleText.Font.Name, SampleText.Font.Size, System.Drawing.FontStyle.Italic); 
+                }
+            }
+        }
+
+        private void ItalicCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ItalicCheck.Checked == true)
+            {
+                if (BoldCheck.Checked == false)
+                {
+                    SampleText.Font = new Font(SampleText.Font.Name, SampleText.Font.Size, System.Drawing.FontStyle.Italic);
+
+                }
+                else
+                {
+                    SampleText.Font = new Font(SampleText.Font.Name, SampleText.Font.Size, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold);
+                }
+            }
+            else
+            {
+                if (BoldCheck.Checked == false)
+                {
+                    SampleText.Font = new Font(SampleText.Font.Name, SampleText.Font.Size, System.Drawing.FontStyle.Regular);
+                }
+                else
+                {
+                    SampleText.Font = new Font(SampleText.Font.Name, SampleText.Font.Size, System.Drawing.FontStyle.Bold);
+                }
+            }
         }
     }
 }
