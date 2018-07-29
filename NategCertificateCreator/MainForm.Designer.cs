@@ -185,6 +185,7 @@
             this.AdvancedPoliceBtn.TabIndex = 12;
             this.AdvancedPoliceBtn.Text = "Advanced Police";
             this.AdvancedPoliceBtn.UseVisualStyleBackColor = true;
+            this.AdvancedPoliceBtn.Click += new System.EventHandler(this.AdvancedPoliceBtn_Click);
             // 
             // StandardPolice
             // 

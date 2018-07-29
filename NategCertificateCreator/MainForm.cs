@@ -106,5 +106,11 @@ namespace NategCertificateCreator
                 MessageBox.Show(message, caption, buttons, MessageBoxIcon.Error);
             }
         }
+
+        private void AdvancedPoliceBtn_Click(object sender, EventArgs e)
+        {
+            PoliceConfigurationForm form = new PoliceConfigurationForm();
+            form.ShowDialog();
+        }
     }
 }
