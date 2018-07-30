@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NategCertificateCreator
 {
-    class PoliceConfiguration
+    static class PoliceConfiguration
     {
     }
 }

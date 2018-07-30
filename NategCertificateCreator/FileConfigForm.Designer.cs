@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.ConfigurationBox = new System.Windows.Forms.GroupBox();
-            this.DelimiterLabel = new System.Windows.Forms.Label();
-            this.CommaRadio = new System.Windows.Forms.RadioButton();
-            this.SemiColonRadio = new System.Windows.Forms.RadioButton();
-            this.TabRadio = new System.Windows.Forms.RadioButton();
-            this.SpaceRadio = new System.Windows.Forms.RadioButton();
             this.HeaderCheck = new System.Windows.Forms.CheckBox();
+            this.SpaceRadio = new System.Windows.Forms.RadioButton();
+            this.TabRadio = new System.Windows.Forms.RadioButton();
+            this.SemiColonRadio = new System.Windows.Forms.RadioButton();
+            this.CommaRadio = new System.Windows.Forms.RadioButton();
+            this.DelimiterLabel = new System.Windows.Forms.Label();
             this.OkBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.ConfigurationBox.SuspendLayout();
@@ -55,47 +55,15 @@
             this.ConfigurationBox.TabStop = false;
             this.ConfigurationBox.Text = "Configuration";
             // 
-            // DelimiterLabel
+            // HeaderCheck
             // 
-            this.DelimiterLabel.AutoSize = true;
-            this.DelimiterLabel.Location = new System.Drawing.Point(23, 27);
-            this.DelimiterLabel.Name = "DelimiterLabel";
-            this.DelimiterLabel.Size = new System.Drawing.Size(50, 13);
-            this.DelimiterLabel.TabIndex = 0;
-            this.DelimiterLabel.Text = "Delimiter:";
-            // 
-            // CommaRadio
-            // 
-            this.CommaRadio.AutoSize = true;
-            this.CommaRadio.Location = new System.Drawing.Point(40, 43);
-            this.CommaRadio.Name = "CommaRadio";
-            this.CommaRadio.Size = new System.Drawing.Size(59, 17);
-            this.CommaRadio.TabIndex = 1;
-            this.CommaRadio.TabStop = true;
-            this.CommaRadio.Text = "comma";
-            this.CommaRadio.UseVisualStyleBackColor = true;
-            // 
-            // SemiColonRadio
-            // 
-            this.SemiColonRadio.AutoSize = true;
-            this.SemiColonRadio.Location = new System.Drawing.Point(109, 43);
-            this.SemiColonRadio.Name = "SemiColonRadio";
-            this.SemiColonRadio.Size = new System.Drawing.Size(78, 17);
-            this.SemiColonRadio.TabIndex = 2;
-            this.SemiColonRadio.TabStop = true;
-            this.SemiColonRadio.Text = "Semi Colon";
-            this.SemiColonRadio.UseVisualStyleBackColor = true;
-            // 
-            // TabRadio
-            // 
-            this.TabRadio.AutoSize = true;
-            this.TabRadio.Location = new System.Drawing.Point(201, 43);
-            this.TabRadio.Name = "TabRadio";
-            this.TabRadio.Size = new System.Drawing.Size(44, 17);
-            this.TabRadio.TabIndex = 3;
-            this.TabRadio.TabStop = true;
-            this.TabRadio.Text = "Tab";
-            this.TabRadio.UseVisualStyleBackColor = true;
+            this.HeaderCheck.AutoSize = true;
+            this.HeaderCheck.Location = new System.Drawing.Point(26, 77);
+            this.HeaderCheck.Name = "HeaderCheck";
+            this.HeaderCheck.Size = new System.Drawing.Size(80, 17);
+            this.HeaderCheck.TabIndex = 5;
+            this.HeaderCheck.Text = "File Header";
+            this.HeaderCheck.UseVisualStyleBackColor = true;
             // 
             // SpaceRadio
             // 
@@ -108,15 +76,47 @@
             this.SpaceRadio.Text = "Space";
             this.SpaceRadio.UseVisualStyleBackColor = true;
             // 
-            // HeaderCheck
+            // TabRadio
             // 
-            this.HeaderCheck.AutoSize = true;
-            this.HeaderCheck.Location = new System.Drawing.Point(26, 77);
-            this.HeaderCheck.Name = "HeaderCheck";
-            this.HeaderCheck.Size = new System.Drawing.Size(80, 17);
-            this.HeaderCheck.TabIndex = 5;
-            this.HeaderCheck.Text = "File Header";
-            this.HeaderCheck.UseVisualStyleBackColor = true;
+            this.TabRadio.AutoSize = true;
+            this.TabRadio.Location = new System.Drawing.Point(201, 43);
+            this.TabRadio.Name = "TabRadio";
+            this.TabRadio.Size = new System.Drawing.Size(44, 17);
+            this.TabRadio.TabIndex = 3;
+            this.TabRadio.TabStop = true;
+            this.TabRadio.Text = "Tab";
+            this.TabRadio.UseVisualStyleBackColor = true;
+            // 
+            // SemiColonRadio
+            // 
+            this.SemiColonRadio.AutoSize = true;
+            this.SemiColonRadio.Location = new System.Drawing.Point(109, 43);
+            this.SemiColonRadio.Name = "SemiColonRadio";
+            this.SemiColonRadio.Size = new System.Drawing.Size(78, 17);
+            this.SemiColonRadio.TabIndex = 2;
+            this.SemiColonRadio.TabStop = true;
+            this.SemiColonRadio.Text = "Semi Colon";
+            this.SemiColonRadio.UseVisualStyleBackColor = true;
+            // 
+            // CommaRadio
+            // 
+            this.CommaRadio.AutoSize = true;
+            this.CommaRadio.Location = new System.Drawing.Point(40, 43);
+            this.CommaRadio.Name = "CommaRadio";
+            this.CommaRadio.Size = new System.Drawing.Size(59, 17);
+            this.CommaRadio.TabIndex = 1;
+            this.CommaRadio.TabStop = true;
+            this.CommaRadio.Text = "comma";
+            this.CommaRadio.UseVisualStyleBackColor = true;
+            // 
+            // DelimiterLabel
+            // 
+            this.DelimiterLabel.AutoSize = true;
+            this.DelimiterLabel.Location = new System.Drawing.Point(23, 27);
+            this.DelimiterLabel.Name = "DelimiterLabel";
+            this.DelimiterLabel.Size = new System.Drawing.Size(50, 13);
+            this.DelimiterLabel.TabIndex = 0;
+            this.DelimiterLabel.Text = "Delimiter:";
             // 
             // OkBtn
             // 
@@ -152,6 +152,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Csv File Configuration";
+            this.Load += new System.EventHandler(this.FileConfigForm_Load);
             this.ConfigurationBox.ResumeLayout(false);
             this.ConfigurationBox.PerformLayout();
             this.ResumeLayout(false);

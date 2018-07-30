@@ -24,6 +24,29 @@ namespace NategCertificateCreator
 
         void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            try{
+                using (Bitmap bitmap = (Bitmap)Image.FromFile(TemplatePath.Text))
+                {
+                    PointF firstLocation = new PointF(float.Parse(PositionX.Text), float.Parse(PositionY.Text));
+                    using (Graphics graphics = Graphics.FromImage(bitmap))
+                    {
+                        using (Font arialFont = new Font("Edwardian Script ITC", 48))
+                        {
+                            //graphics.DrawString(name, arialFont, Brushes.Blue, firstLocation);
+                        }
+                    }
+
+                    //registerPath = Path.GetDirectoryName(Certfication.Text) + "\\" + name + progress.ToString() + ".png";
+                    //bitmap.Save(registerPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                string caption = "Error";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, caption, buttons, MessageBoxIcon.Error);
+            }
         }
 
         void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)

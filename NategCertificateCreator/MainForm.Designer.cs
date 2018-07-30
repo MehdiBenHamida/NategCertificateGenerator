@@ -35,6 +35,9 @@
             this.CreationProgress = new System.Windows.Forms.ProgressBar();
             this.HelpBtn = new System.Windows.Forms.Button();
             this.CertificateBox = new System.Windows.Forms.GroupBox();
+            this.OutputCheck = new System.Windows.Forms.CheckBox();
+            this.AdvancedBtn = new System.Windows.Forms.Button();
+            this.StandardCkeck = new System.Windows.Forms.CheckBox();
             this.OutputBrowseBtn = new System.Windows.Forms.Button();
             this.OutputPath = new System.Windows.Forms.TextBox();
             this.OutputLabel = new System.Windows.Forms.Label();
@@ -42,7 +45,7 @@
             this.StandardPolice = new System.Windows.Forms.CheckBox();
             this.TextLebel = new System.Windows.Forms.Label();
             this.PositionYLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PositionY = new System.Windows.Forms.TextBox();
             this.PositionX = new System.Windows.Forms.TextBox();
             this.PositionXLabel = new System.Windows.Forms.Label();
             this.CertifiedBrowse = new System.Windows.Forms.Button();
@@ -53,9 +56,6 @@
             this.TemplateLabel = new System.Windows.Forms.Label();
             this.CreateBtn = new System.Windows.Forms.Button();
             this.OpenTemplate = new System.Windows.Forms.OpenFileDialog();
-            this.StandardCkeck = new System.Windows.Forms.CheckBox();
-            this.AdvancedBtn = new System.Windows.Forms.Button();
-            this.OutputCheck = new System.Windows.Forms.CheckBox();
             this.OpenCertifiedFile = new System.Windows.Forms.OpenFileDialog();
             this.OutputBrowse = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
@@ -133,7 +133,7 @@
             this.CertificateBox.Controls.Add(this.StandardPolice);
             this.CertificateBox.Controls.Add(this.TextLebel);
             this.CertificateBox.Controls.Add(this.PositionYLabel);
-            this.CertificateBox.Controls.Add(this.textBox1);
+            this.CertificateBox.Controls.Add(this.PositionY);
             this.CertificateBox.Controls.Add(this.PositionX);
             this.CertificateBox.Controls.Add(this.PositionXLabel);
             this.CertificateBox.Controls.Add(this.CertifiedBrowse);
@@ -148,6 +148,42 @@
             this.CertificateBox.TabIndex = 2;
             this.CertificateBox.TabStop = false;
             this.CertificateBox.Text = "Certificate";
+            // 
+            // OutputCheck
+            // 
+            this.OutputCheck.AutoSize = true;
+            this.OutputCheck.Checked = true;
+            this.OutputCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.OutputCheck.Location = new System.Drawing.Point(92, 260);
+            this.OutputCheck.Name = "OutputCheck";
+            this.OutputCheck.Size = new System.Drawing.Size(128, 17);
+            this.OutputCheck.TabIndex = 18;
+            this.OutputCheck.Text = "Output description file";
+            this.OutputCheck.UseVisualStyleBackColor = true;
+            // 
+            // AdvancedBtn
+            // 
+            this.AdvancedBtn.Enabled = false;
+            this.AdvancedBtn.Location = new System.Drawing.Point(251, 119);
+            this.AdvancedBtn.Name = "AdvancedBtn";
+            this.AdvancedBtn.Size = new System.Drawing.Size(91, 20);
+            this.AdvancedBtn.TabIndex = 17;
+            this.AdvancedBtn.Text = "Advanced";
+            this.AdvancedBtn.UseVisualStyleBackColor = true;
+            this.AdvancedBtn.Click += new System.EventHandler(this.AdvancedBtn_Click);
+            // 
+            // StandardCkeck
+            // 
+            this.StandardCkeck.AutoSize = true;
+            this.StandardCkeck.Checked = true;
+            this.StandardCkeck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.StandardCkeck.Location = new System.Drawing.Point(92, 122);
+            this.StandardCkeck.Name = "StandardCkeck";
+            this.StandardCkeck.Size = new System.Drawing.Size(153, 17);
+            this.StandardCkeck.TabIndex = 16;
+            this.StandardCkeck.Text = "Standard csv configuration";
+            this.StandardCkeck.UseVisualStyleBackColor = true;
+            this.StandardCkeck.CheckedChanged += new System.EventHandler(this.StandardCkeck_CheckedChanged);
             // 
             // OutputBrowseBtn
             // 
@@ -218,12 +254,12 @@
             this.PositionYLabel.TabIndex = 9;
             this.PositionYLabel.Text = "Position Y:";
             // 
-            // textBox1
+            // PositionY
             // 
-            this.textBox1.Location = new System.Drawing.Point(152, 190);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(71, 20);
-            this.textBox1.TabIndex = 8;
+            this.PositionY.Location = new System.Drawing.Point(152, 190);
+            this.PositionY.Name = "PositionY";
+            this.PositionY.Size = new System.Drawing.Size(71, 20);
+            this.PositionY.TabIndex = 8;
             // 
             // PositionX
             // 
@@ -308,42 +344,6 @@
             // 
             this.OpenTemplate.FileName = "CertificateTemplate";
             // 
-            // StandardCkeck
-            // 
-            this.StandardCkeck.AutoSize = true;
-            this.StandardCkeck.Checked = true;
-            this.StandardCkeck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.StandardCkeck.Location = new System.Drawing.Point(92, 122);
-            this.StandardCkeck.Name = "StandardCkeck";
-            this.StandardCkeck.Size = new System.Drawing.Size(153, 17);
-            this.StandardCkeck.TabIndex = 16;
-            this.StandardCkeck.Text = "Standard csv configuration";
-            this.StandardCkeck.UseVisualStyleBackColor = true;
-            this.StandardCkeck.CheckedChanged += new System.EventHandler(this.StandardCkeck_CheckedChanged);
-            // 
-            // AdvancedBtn
-            // 
-            this.AdvancedBtn.Enabled = false;
-            this.AdvancedBtn.Location = new System.Drawing.Point(251, 119);
-            this.AdvancedBtn.Name = "AdvancedBtn";
-            this.AdvancedBtn.Size = new System.Drawing.Size(91, 20);
-            this.AdvancedBtn.TabIndex = 17;
-            this.AdvancedBtn.Text = "Advanced";
-            this.AdvancedBtn.UseVisualStyleBackColor = true;
-            this.AdvancedBtn.Click += new System.EventHandler(this.AdvancedBtn_Click);
-            // 
-            // OutputCheck
-            // 
-            this.OutputCheck.AutoSize = true;
-            this.OutputCheck.Checked = true;
-            this.OutputCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.OutputCheck.Location = new System.Drawing.Point(92, 260);
-            this.OutputCheck.Name = "OutputCheck";
-            this.OutputCheck.Size = new System.Drawing.Size(128, 17);
-            this.OutputCheck.TabIndex = 18;
-            this.OutputCheck.Text = "Output description file";
-            this.OutputCheck.UseVisualStyleBackColor = true;
-            // 
             // OpenCertifiedFile
             // 
             this.OpenCertifiedFile.FileName = "Certified";
@@ -384,7 +384,7 @@
         private System.Windows.Forms.Button TemplateBrowseBtn;
         private System.Windows.Forms.OpenFileDialog OpenTemplate;
         private System.Windows.Forms.Label PositionYLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PositionY;
         private System.Windows.Forms.TextBox PositionX;
         private System.Windows.Forms.Label PositionXLabel;
         private System.Windows.Forms.Button CertifiedBrowse;

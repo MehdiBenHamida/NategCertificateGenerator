@@ -50,6 +50,7 @@
     <Compile Include="FileConfigForm.Designer.cs">
       <DependentUpon>FileConfigForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileConfiguration.cs" />
     <Compile Include="HelpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +63,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PoliceConfiguration.cs" />
     <Compile Include="PoliceConfigurationForm.cs">
       <SubType>Form</SubType>
     </Compile>
