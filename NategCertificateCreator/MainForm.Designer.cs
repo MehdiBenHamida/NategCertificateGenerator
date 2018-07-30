@@ -59,6 +59,7 @@
             this.OpenCertifiedFile = new System.Windows.Forms.OpenFileDialog();
             this.OutputBrowse = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.BeautificationCheck = new System.Windows.Forms.CheckBox();
             this.ProgressBox.SuspendLayout();
             this.CertificateBox.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +70,8 @@
             this.ProgressBox.Controls.Add(this.ProgressLabel);
             this.ProgressBox.Controls.Add(this.CancelBtn);
             this.ProgressBox.Controls.Add(this.CreationProgress);
-            this.ProgressBox.Location = new System.Drawing.Point(12, 369);
+            this.ProgressBox.Enabled = false;
+            this.ProgressBox.Location = new System.Drawing.Point(12, 376);
             this.ProgressBox.Name = "ProgressBox";
             this.ProgressBox.Size = new System.Drawing.Size(433, 123);
             this.ProgressBox.TabIndex = 0;
@@ -123,6 +125,7 @@
             // 
             // CertificateBox
             // 
+            this.CertificateBox.Controls.Add(this.BeautificationCheck);
             this.CertificateBox.Controls.Add(this.OutputCheck);
             this.CertificateBox.Controls.Add(this.AdvancedBtn);
             this.CertificateBox.Controls.Add(this.StandardCkeck);
@@ -144,7 +147,7 @@
             this.CertificateBox.Controls.Add(this.TemplateLabel);
             this.CertificateBox.Location = new System.Drawing.Point(12, 45);
             this.CertificateBox.Name = "CertificateBox";
-            this.CertificateBox.Size = new System.Drawing.Size(433, 295);
+            this.CertificateBox.Size = new System.Drawing.Size(433, 303);
             this.CertificateBox.TabIndex = 2;
             this.CertificateBox.TabStop = false;
             this.CertificateBox.Text = "Certificate";
@@ -154,7 +157,7 @@
             this.OutputCheck.AutoSize = true;
             this.OutputCheck.Checked = true;
             this.OutputCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.OutputCheck.Location = new System.Drawing.Point(92, 260);
+            this.OutputCheck.Location = new System.Drawing.Point(92, 271);
             this.OutputCheck.Name = "OutputCheck";
             this.OutputCheck.Size = new System.Drawing.Size(128, 17);
             this.OutputCheck.TabIndex = 18;
@@ -187,7 +190,7 @@
             // 
             // OutputBrowseBtn
             // 
-            this.OutputBrowseBtn.Location = new System.Drawing.Point(348, 233);
+            this.OutputBrowseBtn.Location = new System.Drawing.Point(348, 244);
             this.OutputBrowseBtn.Name = "OutputBrowseBtn";
             this.OutputBrowseBtn.Size = new System.Drawing.Size(66, 20);
             this.OutputBrowseBtn.TabIndex = 15;
@@ -198,7 +201,7 @@
             // OutputPath
             // 
             this.OutputPath.Enabled = false;
-            this.OutputPath.Location = new System.Drawing.Point(92, 233);
+            this.OutputPath.Location = new System.Drawing.Point(92, 244);
             this.OutputPath.Name = "OutputPath";
             this.OutputPath.Size = new System.Drawing.Size(250, 20);
             this.OutputPath.TabIndex = 14;
@@ -206,7 +209,7 @@
             // OutputLabel
             // 
             this.OutputLabel.AutoSize = true;
-            this.OutputLabel.Location = new System.Drawing.Point(36, 236);
+            this.OutputLabel.Location = new System.Drawing.Point(36, 247);
             this.OutputLabel.Name = "OutputLabel";
             this.OutputLabel.Size = new System.Drawing.Size(42, 13);
             this.OutputLabel.TabIndex = 13;
@@ -333,12 +336,13 @@
             // 
             // CreateBtn
             // 
-            this.CreateBtn.Location = new System.Drawing.Point(370, 346);
+            this.CreateBtn.Location = new System.Drawing.Point(370, 354);
             this.CreateBtn.Name = "CreateBtn";
             this.CreateBtn.Size = new System.Drawing.Size(75, 23);
             this.CreateBtn.TabIndex = 3;
             this.CreateBtn.Text = "Create";
             this.CreateBtn.UseVisualStyleBackColor = true;
+            this.CreateBtn.Click += new System.EventHandler(this.CreateBtn_Click);
             // 
             // OpenTemplate
             // 
@@ -347,6 +351,16 @@
             // OpenCertifiedFile
             // 
             this.OpenCertifiedFile.FileName = "Certified";
+            // 
+            // BeautificationCheck
+            // 
+            this.BeautificationCheck.AutoSize = true;
+            this.BeautificationCheck.Location = new System.Drawing.Point(92, 218);
+            this.BeautificationCheck.Name = "BeautificationCheck";
+            this.BeautificationCheck.Size = new System.Drawing.Size(126, 17);
+            this.BeautificationCheck.TabIndex = 19;
+            this.BeautificationCheck.Text = "Names Beautification";
+            this.BeautificationCheck.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -402,6 +416,7 @@
         private System.Windows.Forms.OpenFileDialog OpenCertifiedFile;
         private System.Windows.Forms.FolderBrowserDialog OutputBrowse;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.CheckBox BeautificationCheck;
     }
 }
 

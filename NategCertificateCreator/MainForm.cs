@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace NategCertificateCreator
 {
     public partial class MainForm : Form
     {
+        int AllLines;
+        string CertificateOwner;
+        Boolean isSuccess;
+
         public MainForm()
         {
             InitializeComponent();
@@ -24,24 +29,69 @@ namespace NategCertificateCreator
 
         void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            const int MaxAttemps = 3;
+            int Attemps;
+            int progress = 0;
             try{
-                using (Bitmap bitmap = (Bitmap)Image.FromFile(TemplatePath.Text))
+                using (System.IO.StreamReader file = new System.IO.StreamReader(CertifiedPath.Text))
                 {
-                    PointF firstLocation = new PointF(float.Parse(PositionX.Text), float.Parse(PositionY.Text));
-                    using (Graphics graphics = Graphics.FromImage(bitmap))
+                    if (FileConfiguration.FileHeader)
                     {
-                        using (Font arialFont = new Font("Edwardian Script ITC", 48))
-                        {
-                            //graphics.DrawString(name, arialFont, Brushes.Blue, firstLocation);
-                        }
+                        file.ReadLine();
                     }
-
-                    //registerPath = Path.GetDirectoryName(Certfication.Text) + "\\" + name + progress.ToString() + ".png";
-                    //bitmap.Save(registerPath);
+                    string line = file.ReadLine();
+                    while ((line != null))
+                    {
+                        Attemps = 0;
+                        string[] details = line.Split(FileConfiguration.Delimiter);
+                        string Name;
+                        if (BeautificationCheck.Checked)
+                        {
+                            Name = NameBeautification(details[0]);
+                        }
+                        else
+                        {
+                            Name = details[0];
+                        }
+                        CertificateOwner = Name;
+                        Retry:
+                            try
+                            {
+                                Attemps++;
+                                using (Bitmap bitmap = (Bitmap)Image.FromFile(TemplatePath.Text))
+                                {
+                                    PointF Location = new PointF(float.Parse(PositionX.Text), float.Parse(PositionY.Text));
+                                    using (Graphics graphics = Graphics.FromImage(bitmap))
+                                    {
+                                        using (Font font = new Font("Edwardian Script ITC", 48))
+                                        {
+                                            graphics.DrawString(Name, font, Brushes.Blue, Location);
+                                        }
+                                    }
+                                    string registerPath = MakeRegisterPath(OutputPath.Text, Name + ".png");
+                                    bitmap.Save(registerPath);
+                                }
+                                backgroundWorker.ReportProgress(progress);
+                                isSuccess = true;
+                            }
+                            catch (Exception ep)
+                            {
+                                if (Attemps <= MaxAttemps)
+                                {
+                                    System.Threading.Thread.Sleep(Attemps * 500);
+                                    goto Retry;
+                                }
+                                MessageBox.Show("Can not create certificate for: " + Name + "\n" + ep.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                isSuccess = false;
+                                break;
+                            }
+                        line = file.ReadLine();
+                    }
                 }
             }
             catch (Exception ex)
             {
+                isSuccess = false;
                 string message = ex.Message;
                 string caption = "Error";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -51,10 +101,34 @@ namespace NategCertificateCreator
 
         void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            int d;
+            d = Convert.ToInt32(((double)e.ProgressPercentage / AllLines) * 100);
+            CreationProgress.Value = d;
+            ProgressLabel.Text = d.ToString() + " %";
+            ProgressText.Text = "Creating certificate for: " + CertificateOwner;
         }
 
         void backgroundWorker_Compeleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (isSuccess == true)
+            {
+                CreationProgress.Value = 100;
+                ProgressLabel.Text = "100 %";
+                ProgressText.Text = "All certificates are created succesfully!";
+                string messages = "All certificates are created!";
+                string captions = "Info";
+                MessageBoxButtons button = MessageBoxButtons.OK;
+                MessageBox.Show(messages, captions, button, MessageBoxIcon.Information);
+            }
+            else
+            {
+                ProgressLabel.Text = "0 %";
+                ProgressText.Text = "Certificate creation failed";
+                CreationProgress.Value = 0;
+            }
+            CertificateBox.Enabled = true;
+            CreateBtn.Enabled = true;
+            ProgressBox.Enabled = false;
         }
 
         private void TemplateBrowseBtn_Click(object sender, EventArgs e)
@@ -140,6 +214,66 @@ namespace NategCertificateCreator
         {
             FileConfigForm form = new FileConfigForm();
             form.ShowDialog();
+        }
+
+        private string NameBeautification(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException("Empty String");
+            }
+            else
+            {
+                string result = "";
+                string[] words = name.ToLower().Split(' ');
+                foreach (string word in words)
+                {
+                    result = result + word.First().ToString().ToUpper() + word.Substring(1) + " ";
+                }
+                return result;
+            }
+        }
+
+        private string MakeRegisterPath(string OutputPath, string FileName)
+        {
+            bool exist = true;
+            string result = "";
+            string extention = Path.GetExtension(FileName);
+            string BaseName = Path.GetFileName(FileName).Replace(extention, "");
+            int i = 0;
+            while (exist == true)
+            {
+                if (File.Exists(Path.Combine(OutputPath, FileName)))
+                {
+                    FileName = BaseName + "(" + i.ToString() + ")" + extention;
+                    i++;
+                }
+                else
+                {
+                    result = Path.Combine(OutputPath, FileName);
+                    exist = false;
+                }
+            }
+            return result;
+        }
+
+        private void CreateBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AllLines = File.ReadLines(CertifiedPath.Text).Count();
+                CertificateBox.Enabled = false;
+                CreateBtn.Enabled = false;
+                ProgressBox.Enabled = true;
+                backgroundWorker.RunWorkerAsync();
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                string caption = "Error";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, caption, buttons, MessageBoxIcon.Error);
+            }
         }
     }
 }

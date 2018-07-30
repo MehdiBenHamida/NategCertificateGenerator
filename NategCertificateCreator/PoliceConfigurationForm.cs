@@ -12,6 +12,8 @@ namespace NategCertificateCreator
 {
     public partial class PoliceConfigurationForm : Form
     {
+        private string FontTypeArg;
+        private float FontSizeArg;
         public PoliceConfigurationForm()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace NategCertificateCreator
         private void Font_SelectedIndexChanged(object sender, EventArgs e)
         {
             SampleText.Font =  new Font((string)FontType.SelectedItem, SampleText.Font.Size);
+            FontTypeArg = (string)FontType.SelectedItem;
         }
 
         private void FontColor_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,6 +48,7 @@ namespace NategCertificateCreator
         private void FontSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             SampleText.Font = new Font(SampleText.Font.Name, (float)FontSize.SelectedItem);
+            FontSizeArg = (float)FontSize.SelectedItem;
         }     
 
         private void BoldCheck_CheckedChanged(object sender, EventArgs e)
@@ -103,6 +107,8 @@ namespace NategCertificateCreator
         private void OkBtn_Click(object sender, EventArgs e)
         {
             // check the configuaration static class
+            PoliceConfiguration.FontType = FontTypeArg;
+            PoliceConfiguration.FontSize = (int)FontSizeArg;
             this.Close();
         }
 
