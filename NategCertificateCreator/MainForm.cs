@@ -245,8 +245,8 @@ namespace NategCertificateCreator
             {
                 if (File.Exists(Path.Combine(OutputPath, FileName)))
                 {
-                    FileName = BaseName + "(" + i.ToString() + ")" + extention;
                     i++;
+                    FileName = BaseName + "(" + i.ToString() + ")" + extention;
                 }
                 else
                 {
