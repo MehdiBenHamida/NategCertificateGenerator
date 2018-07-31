@@ -26,7 +26,7 @@ namespace NategCertificateCreator
                 FontColor.Items.Add(color);
             }
             List<float> sizes = new List<float>() { 8, 9, 10, 12, 14, 16, 18, 20, 22, 
-                24, 26, 28, 30, 32, 34, 36, 38, 40, 44, 48, 56, 66, 72, 86, 92 };
+                24, 26, 28, 30, 32, 34, 36, 38, 40, 44, 48, 56, 66, 72, 86, 92, 120, 140, 160, 200 };
             foreach (float size in sizes)
             {
                 FontSize.Items.Add(size);

@@ -32,10 +32,37 @@ namespace NategCertificateCreator
             const int MaxAttemps = 3;
             int Attemps;
             int progress = 0;
-            try{
+            string OutputFile = Utilities.MakeRegisterPath(OutputPath.Text,  "OutputFile.csv");
+            char Delimiter = ',';
+            bool isHeader = false;
+            string PoliceType = "Edwardian Script ITC";
+            int PoliceSize = 14;
+            string registerPath;
+            try
+            {
+                if (StandardCkeck.Checked)
+                {
+                    Delimiter = ',';
+                    isHeader = false;
+                }
+                else
+                {
+                    Delimiter = FileConfiguration.Delimiter;
+                    isHeader = FileConfiguration.FileHeader;
+                }
+                if (StandardPolice.Checked)
+                {
+                    PoliceType = "Edwardian Script ITC";
+                    PoliceSize = 14;
+                }
+                else
+                {
+                    PoliceType = PoliceConfiguration.FontType;
+                    PoliceSize = PoliceConfiguration.FontSize;
+                }
                 using (System.IO.StreamReader file = new System.IO.StreamReader(CertifiedPath.Text))
                 {
-                    if (FileConfiguration.FileHeader)
+                    if (isHeader)
                     {
                         file.ReadLine();
                     }
@@ -43,11 +70,11 @@ namespace NategCertificateCreator
                     while ((line != null))
                     {
                         Attemps = 0;
-                        string[] details = line.Split(FileConfiguration.Delimiter);
+                        string[] details = line.Split(Delimiter);
                         string Name;
                         if (BeautificationCheck.Checked)
                         {
-                            Name = NameBeautification(details[0]);
+                            Name = Utilities.NameBeautification(details[0]);
                         }
                         else
                         {
@@ -63,12 +90,12 @@ namespace NategCertificateCreator
                                     PointF Location = new PointF(float.Parse(PositionX.Text), float.Parse(PositionY.Text));
                                     using (Graphics graphics = Graphics.FromImage(bitmap))
                                     {
-                                        using (Font font = new Font("Edwardian Script ITC", 48))
+                                        using (Font font = new Font(PoliceType, PoliceSize))
                                         {
                                             graphics.DrawString(Name, font, Brushes.Blue, Location);
                                         }
                                     }
-                                    string registerPath = MakeRegisterPath(OutputPath.Text, Name + ".png");
+                                    registerPath = Utilities.MakeRegisterPath(OutputPath.Text, Name + ".png");
                                     bitmap.Save(registerPath);
                                 }
                                 backgroundWorker.ReportProgress(progress);
@@ -85,6 +112,13 @@ namespace NategCertificateCreator
                                 isSuccess = false;
                                 break;
                             }
+                        if (OutputCheck.Checked)
+                        {
+                            using(StreamWriter ofile = new StreamWriter(OutputFile, true))
+                            {
+                                ofile.WriteLine(line + Delimiter + Path.GetFileName(registerPath));
+                            }
+                        }
                         line = file.ReadLine();
                     }
                 }
@@ -214,47 +248,6 @@ namespace NategCertificateCreator
         {
             FileConfigForm form = new FileConfigForm();
             form.ShowDialog();
-        }
-
-        private string NameBeautification(string name)
-        {
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentNullException("Empty String");
-            }
-            else
-            {
-                string result = "";
-                string[] words = name.ToLower().Split(' ');
-                foreach (string word in words)
-                {
-                    result = result + word.First().ToString().ToUpper() + word.Substring(1) + " ";
-                }
-                return result;
-            }
-        }
-
-        private string MakeRegisterPath(string OutputPath, string FileName)
-        {
-            bool exist = true;
-            string result = "";
-            string extention = Path.GetExtension(FileName);
-            string BaseName = Path.GetFileName(FileName).Replace(extention, "");
-            int i = 0;
-            while (exist == true)
-            {
-                if (File.Exists(Path.Combine(OutputPath, FileName)))
-                {
-                    i++;
-                    FileName = BaseName + "(" + i.ToString() + ")" + extention;
-                }
-                else
-                {
-                    result = Path.Combine(OutputPath, FileName);
-                    exist = false;
-                }
-            }
-            return result;
         }
 
         private void CreateBtn_Click(object sender, EventArgs e)

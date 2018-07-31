@@ -35,6 +35,7 @@
             this.CreationProgress = new System.Windows.Forms.ProgressBar();
             this.HelpBtn = new System.Windows.Forms.Button();
             this.CertificateBox = new System.Windows.Forms.GroupBox();
+            this.BeautificationCheck = new System.Windows.Forms.CheckBox();
             this.OutputCheck = new System.Windows.Forms.CheckBox();
             this.AdvancedBtn = new System.Windows.Forms.Button();
             this.StandardCkeck = new System.Windows.Forms.CheckBox();
@@ -59,7 +60,6 @@
             this.OpenCertifiedFile = new System.Windows.Forms.OpenFileDialog();
             this.OutputBrowse = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.BeautificationCheck = new System.Windows.Forms.CheckBox();
             this.ProgressBox.SuspendLayout();
             this.CertificateBox.SuspendLayout();
             this.SuspendLayout();
@@ -151,6 +151,16 @@
             this.CertificateBox.TabIndex = 2;
             this.CertificateBox.TabStop = false;
             this.CertificateBox.Text = "Certificate";
+            // 
+            // BeautificationCheck
+            // 
+            this.BeautificationCheck.AutoSize = true;
+            this.BeautificationCheck.Location = new System.Drawing.Point(92, 218);
+            this.BeautificationCheck.Name = "BeautificationCheck";
+            this.BeautificationCheck.Size = new System.Drawing.Size(126, 17);
+            this.BeautificationCheck.TabIndex = 19;
+            this.BeautificationCheck.Text = "Names Beautification";
+            this.BeautificationCheck.UseVisualStyleBackColor = true;
             // 
             // OutputCheck
             // 
@@ -336,7 +346,7 @@
             // 
             // CreateBtn
             // 
-            this.CreateBtn.Location = new System.Drawing.Point(370, 354);
+            this.CreateBtn.Location = new System.Drawing.Point(370, 353);
             this.CreateBtn.Name = "CreateBtn";
             this.CreateBtn.Size = new System.Drawing.Size(75, 23);
             this.CreateBtn.TabIndex = 3;
@@ -351,16 +361,6 @@
             // OpenCertifiedFile
             // 
             this.OpenCertifiedFile.FileName = "Certified";
-            // 
-            // BeautificationCheck
-            // 
-            this.BeautificationCheck.AutoSize = true;
-            this.BeautificationCheck.Location = new System.Drawing.Point(92, 218);
-            this.BeautificationCheck.Name = "BeautificationCheck";
-            this.BeautificationCheck.Size = new System.Drawing.Size(126, 17);
-            this.BeautificationCheck.TabIndex = 19;
-            this.BeautificationCheck.Text = "Names Beautification";
-            this.BeautificationCheck.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
