@@ -36,7 +36,7 @@ namespace NategCertificateCreator
             char Delimiter = ',';
             bool isHeader = false;
             string PoliceType = "Edwardian Script ITC";
-            int PoliceSize = 14;
+            int PoliceSize = 48;
             string registerPath;
             try
             {
@@ -53,7 +53,7 @@ namespace NategCertificateCreator
                 if (StandardPolice.Checked)
                 {
                     PoliceType = "Edwardian Script ITC";
-                    PoliceSize = 14;
+                    PoliceSize = 48;
                 }
                 else
                 {
