@@ -14,6 +14,7 @@ namespace NategCertificateCreator
     {
         private string FontTypeArg;
         private float FontSizeArg;
+        private Color FontColorArg; 
         public PoliceConfigurationForm()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace NategCertificateCreator
                 FontColor.Items.Add(color);
             }
             List<float> sizes = new List<float>() { 8, 9, 10, 12, 14, 16, 18, 20, 22, 
-                24, 26, 28, 30, 32, 34, 36, 38, 40, 44, 48, 56, 66, 72, 86, 92, 120, 140, 160, 200 };
+                24, 26, 28, 30, 32, 34, 36, 38, 40, 44, 48, 56, 66, 72, 86, 92, 120, 140, 160, 180, 200 };
             foreach (float size in sizes)
             {
                 FontSize.Items.Add(size);
@@ -41,8 +42,8 @@ namespace NategCertificateCreator
 
         private void FontColor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Color SelectedColor = Color.FromKnownColor((KnownColor)FontColor.SelectedItem);
-            SampleText.ForeColor = SelectedColor;
+            FontColorArg = Color.FromKnownColor((KnownColor)FontColor.SelectedItem);
+            SampleText.ForeColor = FontColorArg;
         }
 
         private void FontSize_SelectedIndexChanged(object sender, EventArgs e)
@@ -109,6 +110,7 @@ namespace NategCertificateCreator
             // check the configuaration static class
             PoliceConfiguration.FontType = FontTypeArg;
             PoliceConfiguration.FontSize = (int)FontSizeArg;
+            PoliceConfiguration.FontColor = FontColorArg;
             this.Close();
         }
 
@@ -116,5 +118,6 @@ namespace NategCertificateCreator
         {
             this.Close();
         }
+
     }
 }

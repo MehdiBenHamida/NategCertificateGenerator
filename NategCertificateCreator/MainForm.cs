@@ -37,6 +37,7 @@ namespace NategCertificateCreator
             bool isHeader = false;
             string PoliceType = "Edwardian Script ITC";
             int PoliceSize = 48;
+            Color PoliceColor = Color.Black;
             string registerPath;
             try
             {
@@ -54,11 +55,13 @@ namespace NategCertificateCreator
                 {
                     PoliceType = "Edwardian Script ITC";
                     PoliceSize = 48;
+                    PoliceColor = Color.Black;
                 }
                 else
                 {
                     PoliceType = PoliceConfiguration.FontType;
                     PoliceSize = PoliceConfiguration.FontSize;
+                    PoliceColor = PoliceConfiguration.FontColor;
                 }
                 using (System.IO.StreamReader file = new System.IO.StreamReader(CertifiedPath.Text))
                 {
@@ -92,7 +95,7 @@ namespace NategCertificateCreator
                                     {
                                         using (Font font = new Font(PoliceType, PoliceSize))
                                         {
-                                            graphics.DrawString(Name, font, Brushes.Blue, Location);
+                                            graphics.DrawString(Name, font, new SolidBrush(PoliceColor), Location);
                                         }
                                     }
                                     registerPath = Utilities.MakeRegisterPath(OutputPath.Text, Name + ".png");

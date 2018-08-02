@@ -40,8 +40,8 @@
             this.FontBox = new System.Windows.Forms.GroupBox();
             this.SampleBox = new System.Windows.Forms.GroupBox();
             this.StyleBox = new System.Windows.Forms.GroupBox();
-            this.BoldCheck = new System.Windows.Forms.CheckBox();
             this.ItalicCheck = new System.Windows.Forms.CheckBox();
+            this.BoldCheck = new System.Windows.Forms.CheckBox();
             this.FontBox.SuspendLayout();
             this.SampleBox.SuspendLayout();
             this.StyleBox.SuspendLayout();
@@ -167,17 +167,6 @@
             this.StyleBox.TabStop = false;
             this.StyleBox.Text = "Style";
             // 
-            // BoldCheck
-            // 
-            this.BoldCheck.AutoSize = true;
-            this.BoldCheck.Location = new System.Drawing.Point(102, 19);
-            this.BoldCheck.Name = "BoldCheck";
-            this.BoldCheck.Size = new System.Drawing.Size(47, 17);
-            this.BoldCheck.TabIndex = 12;
-            this.BoldCheck.Text = "Bold";
-            this.BoldCheck.UseVisualStyleBackColor = true;
-            this.BoldCheck.CheckedChanged += new System.EventHandler(this.BoldCheck_CheckedChanged);
-            // 
             // ItalicCheck
             // 
             this.ItalicCheck.AutoSize = true;
@@ -188,6 +177,17 @@
             this.ItalicCheck.Text = "Italic";
             this.ItalicCheck.UseVisualStyleBackColor = true;
             this.ItalicCheck.CheckedChanged += new System.EventHandler(this.ItalicCheck_CheckedChanged);
+            // 
+            // BoldCheck
+            // 
+            this.BoldCheck.AutoSize = true;
+            this.BoldCheck.Location = new System.Drawing.Point(102, 19);
+            this.BoldCheck.Name = "BoldCheck";
+            this.BoldCheck.Size = new System.Drawing.Size(47, 17);
+            this.BoldCheck.TabIndex = 12;
+            this.BoldCheck.Text = "Bold";
+            this.BoldCheck.UseVisualStyleBackColor = true;
+            this.BoldCheck.CheckedChanged += new System.EventHandler(this.BoldCheck_CheckedChanged);
             // 
             // PoliceConfigurationForm
             // 

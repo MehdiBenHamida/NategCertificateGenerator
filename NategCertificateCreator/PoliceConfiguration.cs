@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace NategCertificateCreator
 {
@@ -10,6 +11,7 @@ namespace NategCertificateCreator
     {
         static private string _fontType { get; set; }
         static private int _fontSize { get; set; }
+        static private Color _fontColor { get; set; }
 
         public static string FontType
         {
@@ -21,6 +23,12 @@ namespace NategCertificateCreator
         {
             get { return _fontSize; }
             set { _fontSize = value; }
+        }
+
+        public static Color FontColor
+        {
+            get { return _fontColor; }
+            set { _fontColor = value; }
         }
     }
 }

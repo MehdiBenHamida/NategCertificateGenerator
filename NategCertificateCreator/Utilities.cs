@@ -46,7 +46,7 @@ namespace NategCertificateCreator
                 {
                     result = result + word.First().ToString().ToUpper() + word.Substring(1) + " ";
                 }
-                return result;
+                return result.Remove(result.Length - 1);
             }
         }
     }
