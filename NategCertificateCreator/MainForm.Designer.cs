@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ProgressBox = new System.Windows.Forms.GroupBox();
             this.ProgressText = new System.Windows.Forms.Label();
             this.ProgressLabel = new System.Windows.Forms.Label();
@@ -372,6 +373,7 @@
             this.Controls.Add(this.HelpBtn);
             this.Controls.Add(this.ProgressBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nateg Certificate Creator";
